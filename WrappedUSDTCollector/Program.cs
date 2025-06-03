@@ -1,3 +1,4 @@
+using System.Net;
 using System.Net.Http.Headers;
 using Quartz;
 
@@ -12,6 +13,10 @@ builder.Services.AddHttpClient<IExmoService,ExmoService>(opt =>
     opt.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("Mozilla", "5.0"));
     opt.DefaultRequestHeaders.TryAddWithoutValidation("Host", "api.exmo.com");
     
+}).ConfigurePrimaryHttpMessageHandler(()=>new HttpClientHandler()
+{
+    Proxy = new WebProxy("http://172.16.207.142"),
+    UseProxy = true
 });
 
 builder.Services.AddHttpClient<IYahooService, YahooService>(opt =>
