@@ -24,7 +24,7 @@ builder.Services.AddHttpClient<IYahooService, YahooService>(opt =>
 builder.Services.AddHttpClient<IIndexService, IndexService>(opt =>
 {
     opt.BaseAddress = new Uri(IndexService.BaseUrl);
-    opt.DefaultRequestHeaders.TryAddWithoutValidation("Authentication", Environment.GetEnvironmentVariable("API_KEY"));
+    opt.DefaultRequestHeaders.TryAddWithoutValidation("APIKEY", Environment.GetEnvironmentVariable("API_KEY"));
 });
 
 builder.Services.AddSingleton<ISyncService, SyncService>();
