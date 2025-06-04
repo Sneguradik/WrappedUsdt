@@ -15,7 +15,7 @@ builder.Services.AddHttpClient<IExmoService,ExmoService>(opt =>
     
 }).ConfigurePrimaryHttpMessageHandler(()=>new HttpClientHandler()
 {
-    Proxy = new WebProxy("http://172.16.207.142"),
+    Proxy = new WebProxy("http://tahoe.rtsnet.ru:3128"),
     UseProxy = true
 });
 
