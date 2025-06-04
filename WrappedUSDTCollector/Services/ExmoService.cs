@@ -11,7 +11,7 @@ public interface IExmoService
 
 public class ExmoService(HttpClient client, ILogger<ExmoService> logger) : IExmoService
 {
-    public const string BaseUrl = "https://api.exmo.com";
+    public const string BaseUrl = "https://chart.exmoney.com";
     public const string SourceName = "Exmo";
 
     private readonly JsonSerializerOptions _jsonOptions = new()
@@ -24,7 +24,7 @@ public class ExmoService(HttpClient client, ILogger<ExmoService> logger) : IExmo
         var fromUnix = new DateTimeOffset(startDate).ToUnixTimeSeconds();
         var toUnix = new DateTimeOffset(endDate).ToUnixTimeSeconds();
 
-        var url = $"/v1.1/candles_history?symbol={symbol}&resolution=1&from={fromUnix}&to={toUnix}";
+        var url = $"/ctrl/chart/history?symbol={symbol}&resolution=1&from={fromUnix}&to={toUnix}";
 
         var req = await client.GetAsync(url, token);
 

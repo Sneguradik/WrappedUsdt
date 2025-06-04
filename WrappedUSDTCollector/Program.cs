@@ -11,12 +11,8 @@ builder.Services.AddHttpClient<IExmoService,ExmoService>(opt =>
 {
     opt.BaseAddress = new Uri(ExmoService.BaseUrl);
     opt.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("Mozilla", "5.0"));
-    opt.DefaultRequestHeaders.TryAddWithoutValidation("Host", "api.exmo.com");
+    opt.DefaultRequestHeaders.TryAddWithoutValidation("Host", "chart.exmoney.com");
     
-}).ConfigurePrimaryHttpMessageHandler(()=>new HttpClientHandler()
-{
-    Proxy = new WebProxy("http://tahoe.rtsnet.ru:3128"),
-    UseProxy = true
 });
 
 builder.Services.AddHttpClient<IYahooService, YahooService>(opt =>
