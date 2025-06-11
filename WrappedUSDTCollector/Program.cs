@@ -15,12 +15,6 @@ builder.Services.AddHttpClient<IExmoService,ExmoService>(opt =>
     
 });
 
-builder.Services.AddHttpClient<IYahooService, YahooService>(opt =>
-{
-    opt.BaseAddress = new Uri(YahooService.BaseUrl);
-    opt.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("Mozilla", "5.0"));
-});
-
 builder.Services.AddHttpClient<IIndexService, IndexService>(opt =>
 {
     opt.BaseAddress = new Uri(IndexService.BaseUrl);
